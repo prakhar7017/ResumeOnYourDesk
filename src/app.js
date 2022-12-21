@@ -144,7 +144,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
     console.error(error);
   });
 
-  const filepath="http://localhost:3000/doc/"+filename;
+  const filepath="https://grumpy-garters-ox.cyclic.app/"+filename;
   res.render("download",{
     path:filepath
 })
@@ -212,7 +212,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   .catch((error) => {
     console.error(error);
   });
-  const filepath="http://localhost:3000/doc/"+filename;
+  const filepath="https://grumpy-garters-ox.cyclic.app/"+filename;
   res.render("download",{
     path:filepath
 })
