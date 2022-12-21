@@ -92,7 +92,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let data=req.body;
   if(theme_used==="1"){
     const filename=Math.random()+"_doc"+".pdf";
-    var html = fs.readFileSync(path.join(__dirname,"./views/index.html"),"utf-8");
+    var html = fs.readFileSync(path.join(__dirname,"../views/index.html"),"utf-8");
     var options = {
       format: "A3",
       orientation: "portrait",
@@ -150,7 +150,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
 })
   }else{
     const filename=Math.random()+"_doc"+".pdf";
-    var html = fs.readFileSync(path.join(__dirname,"./views/index.html"),"utf-8");
+    var html = fs.readFileSync(path.join(__dirname,"../views/index2.html"),"utf-8");
     var options = {
       format: "A3",
       orientation: "portrait",
