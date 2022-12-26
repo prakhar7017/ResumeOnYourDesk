@@ -132,7 +132,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let document = {
     html: html,
     data: users,
-    path: `./`+filename,
+    path: `./doc/`+filename,
     type: "",
   };
   pdf
