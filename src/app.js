@@ -144,7 +144,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
     console.error(error);
   });
 
-  const filepath="https://grumpy-garters-ox.cyclic.app/"+filename;
+  const filepath="https://grumpy-garters-ox.cyclic.app/resume-maker"+filename;
   res.render("download",{
     path:filepath
 })
