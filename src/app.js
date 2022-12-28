@@ -143,7 +143,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
     console.error(error);
   });
 
-  const filepath="https://grumpy-garters-ox.cyclic.app/doc/"+filename;
+  const filepath="https://grumpy-garters-ox.cyclic.app/resume-maker/doc/"+filename;
   res.render("download",{
     path:filepath
 })
@@ -200,7 +200,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let document = {
     html: html,
     data: users,
-    path: `./`+filename,
+    path: `./doc/`+filename,
     type: "",
   };
   pdf
