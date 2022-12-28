@@ -22,7 +22,9 @@ app.set("views", views_path);
 app.use(express.static(static_path));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/doc",express.static(path.join(__dirname,"./doc")));
+app.use("/doc",express.static(path.join(__dirname,"../doc")));
+
+console.log(path.join(__dirname,"../doc"))
 
 
 app.use(passport.initialize());
@@ -131,7 +133,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let document = {
     html: html,
     data: users,
-    path: `./doc/`+filename,
+    path: `../doc/`+filename,
     type: "",
   };
   pdf
@@ -143,7 +145,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
     console.error(error);
   });
 
-  const filepath="https://grumpy-garters-ox.cyclic.app/resume-maker/doc/"+filename;
+  const filepath=process.env.DEPLOYED_LINK+`doc/`+filename;
   res.render("download",{
     path:filepath
 })
@@ -200,7 +202,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let document = {
     html: html,
     data: users,
-    path: `./doc/`+filename,
+    path: `../doc/`+filename,
     type: "",
   };
   pdf
@@ -211,7 +213,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   .catch((error) => {
     console.error(error);
   });
-  const filepath="https://grumpy-garters-ox.cyclic.app/doc/"+filename;
+  const filepath=process.env.DEPLOYED_LINK+`doc/`+filename;
   res.render("download",{
     path:filepath
 })
