@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const path = require("path");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const phantom=require("phantomjs-prebuilt");
 const { profile } = require("console");
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
@@ -151,7 +152,9 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   const filepath=process.env.DEPLOYED_LINK+doc_path+filename;
   res.render("download",{
     path:filepath
-})
+  })
+  phantom.exit()
+
   }else{
     const filename=Math.random()+"_doc"+".pdf";
     var html = fs.readFileSync(path.join(__dirname,"../views/index2.html"),"utf-8");
