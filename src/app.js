@@ -5,9 +5,12 @@ const path = require("path");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 const { profile } = require("console");
+const mongoose=require("mongoose")
+const Register=require("./model/register")
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
 const { rmSync } = require("fs");
+require("./db/connection");
 
 const app = express();
 
@@ -68,7 +71,16 @@ app.get("/google/callback",passport.authenticate("google", { failureRedirect: "/
 );
 
 app.get("/tempelate",loggedIn,async(req,res,next)=>{
-  try {
+  try {const useremail=req.user.emails[0].value;
+    const username=req.user.displayName;
+    const finduser=await Register.findOne({email:useremail});
+    if(!finduser){
+      const registerUser=new Register({
+        email:useremail,
+        userName:username,
+      })
+      await registerUser.save();
+    }
     res.render("resumetemplate");
   } catch (error) {
     res.status(400).json({message:"something went wrong"});
