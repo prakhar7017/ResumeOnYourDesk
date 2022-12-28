@@ -80,8 +80,10 @@ app.get("/tempelate",loggedIn,async(req,res,next)=>{
         userName:username,
       })
       await registerUser.save();
+      res.render("resumetemplate");
+    }else{
+      res.render("resumetemplate");
     }
-    res.render("resumetemplate");
   } catch (error) {
     res.status(400).json({message:"something went wrong"});
     
