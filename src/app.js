@@ -15,6 +15,7 @@ require("./middleware/passport-setup/passport");
 
 const static_path = path.join(__dirname, "../public");
 const views_path = path.join(__dirname, "../views");
+const doc_path=path.join(__dirname,"../public/doc");
 
 app.set("view engine", "ejs");
 app.set("views", views_path);
@@ -24,7 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use("/doc",express.static(path.join(__dirname,"../doc")));
 
-console.log(path.join(__dirname,"../doc"))
+// console.log(path.join(__dirname,"../public/doc"))
+// console.log(`../public/doc`);
 
 
 app.use(passport.initialize());
@@ -133,7 +135,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let document = {
     html: html,
     data: users,
-    path: `doc/`+filename,
+    path: doc_path+filename,
     type: "",
   };
   pdf
@@ -144,8 +146,8 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   .catch((error) => {
     console.error(error);
   });
-
-  const filepath=process.env.DEPLOYED_LINK+`doc/`+filename;
+// console.log(process.env.DEPLOYED_LINK+doc_path+filename);
+  const filepath=process.env.DEPLOYED_LINK+doc_path+filename;
   res.render("download",{
     path:filepath
 })
