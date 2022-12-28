@@ -85,7 +85,6 @@ app.get("/resume/:theme",loggedIn,(req,res,next)=>{
   }
 
 });
-"index.html", "utf8"
 
 app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let theme_used=req.body.theme;
@@ -144,7 +143,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
     console.error(error);
   });
 
-  const filepath="https://grumpy-garters-ox.cyclic.app/resume-maker"+filename;
+  const filepath="https://grumpy-garters-ox.cyclic.app/doc/"+filename;
   res.render("download",{
     path:filepath
 })
@@ -212,7 +211,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   .catch((error) => {
     console.error(error);
   });
-  const filepath="https://grumpy-garters-ox.cyclic.app/"+filename;
+  const filepath="https://grumpy-garters-ox.cyclic.app/doc/"+filename;
   res.render("download",{
     path:filepath
 })
