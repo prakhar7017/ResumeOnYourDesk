@@ -21,6 +21,7 @@ app.set("view engine", "ejs");
 app.set("views", views_path);
 
 app.use(express.static(static_path));
+app.use(express.static(doc_path));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use("/doc",express.static(path.join(__dirname,"../doc")));
