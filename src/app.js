@@ -22,7 +22,7 @@ app.set("views", views_path);
 app.use(express.static(static_path));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/doc",express.static(path.join(__dirname,"../doc")));
+// app.use("/doc",express.static(path.join(__dirname,"../doc")));
 
 console.log(path.join(__dirname,"../doc"))
 
@@ -133,7 +133,7 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
   let document = {
     html: html,
     data: users,
-    path: `../doc/`+filename,
+    path: `doc/`+filename,
     type: "",
   };
   pdf
@@ -198,11 +198,11 @@ app.post("/resume-maker",loggedIn,(req,res,next)=>{
       skill3: req.body.skill_3,
       skill4: req.body.skill_4,
     }
-  
+    // `../doc/`
   let document = {
     html: html,
     data: users,
-    path: `../doc/`+filename,
+    path: `doc/`+filename,
     type: "",
   };
   pdf
